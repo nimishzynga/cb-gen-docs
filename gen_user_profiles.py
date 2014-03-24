@@ -78,7 +78,8 @@ def generate_and_load_user_profiles(profile_gen, json_loader, options):
             orders.append(order_gen.generate_orders_from_history(user_profiles[curr_profile]["shipped_order_history"]))
 
         if options.batch_size == 1:
-            json_loader.write_one_json(user_profiles[0]["profile_details"]["user_id"], user_profiles[0])
+            #putting the junk data for value
+            json_loader.write_one_json(user_profiles[0]["profile_details"]["user_id"], "dfdfdfd {{ dfdfdfd")
             user_profiles[:] = []
         elif (x + 1) % options.batch_size == 0:
             batch_id = (x + 1)/options.batch_size

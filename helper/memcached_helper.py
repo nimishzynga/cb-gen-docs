@@ -1,5 +1,6 @@
 
 import json
+import time
 from lib.mc_bin_client import MemcachedClient, MemcachedError
 
 class MemcachedHelper(object):
@@ -15,7 +16,8 @@ class MemcachedHelper(object):
         loaded = False
         while count < 60 and not loaded:
             try:
-                self.client.set(key, 0, 0, json.dumps(doc))
+                #self.client.set(key, 0, 0, json.dumps(doc))
+                self.client.set(key, 0, 0, doc)
                 loaded = True
             except MemcachedError as error:
                 if error.status == 134:
